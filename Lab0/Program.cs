@@ -14,16 +14,16 @@ namespace Lab0
             Console.Write("Please Enter a low number: ");
             int lowNumber = Convert.ToInt32(Console.ReadLine());
 
-            // Loops until user enters a positive integer
+            // Ask user to enter a high number
+            Console.Write("Please Enter a high number: ");
+            int highNumber = Convert.ToInt32(Console.ReadLine());
+
+            // Task 2: loops until user enters a positive integer
             while (lowNumber <= 0)
             {
                 Console.Write("Incorrect. Please enter a positive low number: ");
                 lowNumber = Convert.ToInt32(Console.ReadLine());
             }
-
-            // Ask user to enter a high number
-            Console.Write("Please Enter a high number: ");
-            int highNumber = Convert.ToInt32(Console.ReadLine());
 
             // Loops until user enters a number that is higher than the low number
             while (highNumber <= lowNumber) 
@@ -60,7 +60,6 @@ namespace Lab0
             GetValidUserInput(numbersFile, highLowNumberArray);
 
             //Additional tasks: using double data type intead of string and list instead of array
-
             List<double> highLowNumberList = new List<double>();
 
             // Fills the list with the low to high numbers 
