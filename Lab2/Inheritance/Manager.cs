@@ -36,7 +36,7 @@ namespace Inheritance
         {
             //string text = File.ReadAllText("C://Users//amoussa//source//repos//2_Lab Inheritance//2_Lab Inheritance//Employee.cs");
             //Console.WriteLine(text);
-            string[] lines = File.ReadAllLines("C://Users//amoussa//source//repos//2_Lab Inheritance//2_Lab Inheritance//employees.txt");
+            string[] lines = File.ReadAllLines("C://Users//ssidh//cprg211//Lab2//Inheritance//resources//employees.txt");
 
             foreach (string line in lines)
             {
