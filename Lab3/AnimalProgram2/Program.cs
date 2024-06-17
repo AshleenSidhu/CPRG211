@@ -21,7 +21,7 @@
             Dog dog = new Dog(dogName, dogHeight, dogColour, dogAge);
 
             dog.Eat();
-            dog.Cry();
+            Console.WriteLine(dog.Cry());
 
             // Ask user for properties of the cat
             Console.Write("\nEnter the name of your cat: ");
@@ -40,7 +40,7 @@
             Cat cat = new Cat(catName, catHeight, catColour, catAge);
 
             cat.Eat();
-            cat.Cry();
+            Console.WriteLine(cat.Cry());
 
             // Creat another dog object
             Dog dog2 = new Dog("Champ", 1.5f, "Brown", 6);
