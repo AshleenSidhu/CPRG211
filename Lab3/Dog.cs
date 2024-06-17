@@ -8,12 +8,15 @@ namespace AnimalProgram
 {
     internal class Dog : Animal
     {
+        /// <summary>
+        /// Method for displaying the eating habits of a dog
+        /// </summary>
         public override void Eat()
         {
             Console.WriteLine("Dog eat meat.");
         }
 
-        public Dog(string? dogName, string? dogColour, float dogAge)
+        public Dog(string dogName, string dogColour, float dogAge)
         {
             Name = dogName;
             Colour = dogColour;

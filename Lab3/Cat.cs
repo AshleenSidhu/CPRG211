@@ -13,7 +13,7 @@ namespace AnimalProgram
             Console.WriteLine("Cat eat mice.");
         }
 
-        public Cat(string? catName, string? catColour, float catAge)
+        public Cat(string catName, string catColour, float catAge)
         {
             Name = catName;
             Colour = catColour;
