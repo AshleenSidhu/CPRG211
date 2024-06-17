@@ -48,8 +48,7 @@ namespace Lab1
         public void DisplayPersonInfo()
         {
             // Display the person's information
-            Console.WriteLine($"Name: {FullName}");
-            Console.WriteLine($"{PersonID}: {FullName}'s favorite color is {FavoriteColor}");
+            Console.WriteLine($"{PersonID}: {FullName}'s favorite color is: {FavoriteColor}");
            
         }
 
@@ -61,7 +60,6 @@ namespace Lab1
         {
             // Change the favorite color to "White"
             FavoriteColor = "White";
-            Console.WriteLine($"Favorite color has been changed to {FavoriteColor}.");
         }
 
         /// <summary>
@@ -70,7 +68,7 @@ namespace Lab1
         public void GetAgeInTenYears()
         {
             int newAgeInTenYears = Age + 10;
-            Console.WriteLine($"{FullName} in ten years will be " + newAgeInTenYears + " years old.");
+            Console.WriteLine($"{FullName} in ten years is: " + newAgeInTenYears);
         }
 
         /// <summary>

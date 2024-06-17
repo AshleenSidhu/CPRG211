@@ -26,16 +26,16 @@ namespace Lab1
             switch(relationType)
             {
                 case "Sister":
-                    relationType = "Sister";
+                    relationType = "Sisterhood";
                     break;
                 case "Brother":
-                    relationType = "Brother";
+                    relationType = "Brotherhood";
                     break;
                 case "Mother":
-                    relationType = "Mother";
+                    relationType = "Motherhood";
                     break;
                 case "Father":
-                    relationType = "Father";
+                    relationType = "Fatherhood";
                     break;
                 default:
                     relationType = "Unknown";
@@ -43,7 +43,7 @@ namespace Lab1
             }
 
             // Display the relationship between the two people
-            Console.WriteLine($"Relationship: {person1.FullName} is {relationType} to {person2.FullName}");
+            Console.WriteLine($"Relationship between {person1.FirstName} and {person2.FirstName} is: {relationType}");
         }
 
     }
