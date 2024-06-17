@@ -1,4 +1,4 @@
-﻿namespace AnimalProgram
+﻿namespace AnimalProgram1
 {
     internal class Program
     {
