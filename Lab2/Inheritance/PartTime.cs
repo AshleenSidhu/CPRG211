@@ -81,7 +81,7 @@ namespace Inheritance
             this.hours = hours;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return $"\nWages ID: {GetId()} \nName: {GetName()} \nAddress: {GetAddress()} \nPhone: {GetPhone()} \nSIN: {GetSin()} \nDate of Birth:{GetDateOfBirth()} \nDepartment: {GetDepartment()} \nRate: {GetRate()} \nHours {GetHour()} \nPay: {GetPay()}";
         }
