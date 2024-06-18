@@ -8,6 +8,7 @@ namespace Inheritance
 {
     class Employee
     {
+        // Properties of employee
         private string id;
         private string name;
         private string address;
@@ -16,28 +17,23 @@ namespace Inheritance
         private string dateOfBirth;
         private string department;
 
-        /**
-		 * Creates an Employee object with default values.
-		 */
-        public Employee()
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Employee() { }
+
+        /// <summary>
+        /// Constructor for Employees
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="address"></param>
+        /// <param name="phone"></param>
+        /// <param name="sin"></param>
+        /// <param name="dateOfBirth"></param>
+        /// <param name="department"></param>
+        public Employee(string id, string name, string address, string phone, long sin, string dateOfBirth, string department)
         {
-
-        }
-
-        /**
-		 * Creates an Employee object providing the id, name, address, phone, address, sin, date of birth and department.
-		 * @param id id
-		 * @param name name
-		 * @param address address
-		 * @param phone phone number
-		 * @param sin Social Insurance Number
-		 * @param dateOfBirth date of birth
-		 * @param department department
-		 */
-        public Employee(string id, string name, string address, string phone, long sin, string dateOfBirth,
-                string department)
-        {
-
             this.id = id;
             this.name = name;
             this.address = address;
@@ -47,138 +43,145 @@ namespace Inheritance
             this.department = department;
         }
 
-        /** 
-		 * Returns the id.
-		 * @return the id
-		 */
+        /// <summary>
+        /// returns id
+        /// </summary>
+        /// <returns></returns>
         public string GetId()
         {
             return id;
         }
 
-        /**
-		 * Sets the id to the id provided. 
-		 * @param id the id to Set
-		 */
+        /// <summary>
+        /// sets id
+        /// </summary>
+        /// <param name="id"></param>
         public void SetId(string id)
         {
             this.id = id;
         }
 
-        /**
-		 * Returns the name.
-		 * @return the name
-		 */
-        public string GetName()
-        {
-            return name;
-        }
-
-        /**
-		 * Sets the name to the name provided.
-		 * @param name the name to Set
-		 */
-        public void SetName(string name)
-        {
-            this.name = name;
-        }
-
-        /**
-		 * Returns the address.
-		 * @return the address
-		 */
+        /// <summary>
+        /// returns address
+        /// </summary>
+        /// <returns></returns>
         public string GetAddress()
         {
             return address;
         }
 
-        /**
-		 * Sets the address to the provided address.
-		 * @param address the address to Set
-		 */
+        /// <summary>
+        /// sets address
+        /// </summary>
+        /// <param name="address"></param>
         public void SetAddress(string address)
         {
             this.address = address;
         }
 
-        /**
-		 * Returns the phone number.
-		 * @return the phone phone number
-		 */
+        /// <summary>
+        /// returns phone
+        /// </summary>
+        /// <returns></returns>
         public string GetPhone()
         {
             return phone;
         }
 
-        /**
-		 * Sets the phone number to the phone number provided.
-		 * @param phone the phone number to Set
-		 */
+        /// <summary>
+        /// sets phone
+        /// </summary>
+        /// <param name="phone"></param>
         public void SetPhone(string phone)
         {
             this.phone = phone;
         }
 
-        /**
-		 * Returns Social Insurance Number. 
-		 * @return the Social Insurance Number
-		 */
+        /// <summary>
+        /// returns name
+        /// </summary>
+        /// <returns></returns>
+        public string GetName()
+        {
+            return name;
+        }
+
+        /// <summary>
+        /// sets name
+        /// </summary>
+        /// <param name="name"></param>
+        public void SetName(string name)
+        {
+            this.name = name;
+        }
+     
+        /// <summary>
+        /// returns SIN
+        /// </summary>
+        /// <returns></returns>
         public long GetSin()
         {
             return sin;
         }
 
-        /**
-		 * Sets the sin to the Social Insurance Number provided.
-		 * @param sin the Social Insurance Number to Set
-		 */
+        /// <summary>
+        /// sets SIN
+        /// </summary>
+        /// <param name="sin"></param>
         public void SetSin(long sin)
         {
             this.sin = sin;
         }
 
-        /**
-		 * Returns the date of birth.
-		 * @return the dateOfBirth
-		 */
+        /// <summary>
+        /// returns date of birth 
+        /// </summary>
+        /// <returns></returns>
         public string GetDateOfBirth()
         {
             return dateOfBirth;
         }
 
-        /**
-		 * Sets the date of birth to the date of birth provided.
-		 * @param dateOfBirth the date of birth to Set
-		 */
+        /// <summary>
+        /// sets the date of birth
+        /// </summary>
+        /// <param name="dateOfBirth"></param>
         public void SetDateOfBirth(string dateOfBirth)
         {
             this.dateOfBirth = dateOfBirth;
         }
 
-        /**
-		 * Returns the department. 
-		 * @return the department
-		 */
+        /// <summary>
+        /// returns department
+        /// </summary>
+        /// <returns></returns>
         public string GetDepartment()
         {
             return department;
         }
 
-        /** 
-		 * Sets department to the department provided.
-		 * @param department the department to Set
-		 */
+        /// <summary>
+        /// sets department
+        /// </summary>
+        /// <param name="department"></param>
         public void SetDepartment(string department)
         {
             this.department = department;
         }
 
-
+        /// <summary>
+        /// Displays employee information
+        /// </summary>
+        /// <returns>string</returns>
         public string tostring()
         {
-            return "Employee ID=" + GetId() + ", name=" + GetName() + ", address=" + GetAddress()
-                    + ", phone)=" + GetPhone() + ", SIN=" + GetSin() + ", date of birth=" + GetDateOfBirth()
-                    + ", department=" + GetDepartment();
+            return "\nEmployee ID:" + GetId() + 
+                " \nName=" + GetName() + 
+                " \nAddress=" + GetAddress() + 
+                " \nPhone)=" + GetPhone() + 
+                " \nSIN=" + GetSin() + 
+                " \nDate of birth=" + GetDateOfBirth() + 
+                " \nDepartment=" + GetDepartment();
         }
 
 
