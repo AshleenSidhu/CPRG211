@@ -9,8 +9,8 @@ namespace Inheritance
 {
     internal class PartTime : Employee
     {
-		private double rate { get; set; }
-		private double hours { get; set; }
+        private double rate;
+        private double hours;
 
 		/// <summary>
 		/// Default constructor

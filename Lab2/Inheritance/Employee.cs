@@ -176,7 +176,7 @@ namespace Inheritance
         /// Displays employee information
         /// </summary>
         /// <returns>string</returns>
-        public string tostring()
+        public virtual string ToString()
         {
             return "\nEmployee ID:" + GetId() + 
                 " \nName=" + GetName() + 
