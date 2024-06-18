@@ -38,7 +38,7 @@ namespace Inheritance
             }
 
             // Display output
-            Console.WriteLine($"The average pay for all employees is: {AveragePay(employees):F2}");
+            Console.WriteLine($"The average pay for all employees is: ${AveragePay(employees):F2}");
             Console.WriteLine($"\nThe Wages employee with the highest pay is: {HighestPayWagesEmployee(employees):F2}");
             Console.WriteLine($"\nThe Salaried employee with the lowest pay is: {LowestPaySalariedEmployee(employees):F2}");
             Console.WriteLine($"\nPercentage of Salaried employees is: {PercentageOfSalaried(employees):F2}%");
