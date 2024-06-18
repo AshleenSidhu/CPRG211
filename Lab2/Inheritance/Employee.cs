@@ -20,7 +20,10 @@ namespace Inheritance
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Employee() { }
+        public Employee() 
+        { 
+
+        }
 
         /// <summary>
         /// Constructor for Employees

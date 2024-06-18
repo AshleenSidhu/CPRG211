@@ -14,11 +14,7 @@ namespace Inheritance
 		/// <summary>
 		/// Gets the rate.
 		/// </summary>
-        public Wages()
-        {
-            rate = 0;
-			hours = 0;
-        }
+		public Wages() { }
 
 		/// <summary>
 		/// The constructor for the Wages class.
@@ -28,29 +24,10 @@ namespace Inheritance
 		/// <param name="address"></param>
 		/// <param name="phone"></param>
 		/// <param name="sin"></param>
-        public Wages(string id, string name, string address, string phone, long sin, string dateOfBirth, string department, double rate, double hours)
+        public Wages(string id, string name, string address, string phone, long sin, string dateOfBirth, string department, double rate, double hours) : base(id, name, address, phone, sin, dateOfBirth, department)
         {
             this.rate = rate;
 			this.hours = hours;
-        }
-
-		/// <summary>
-		/// For claculaing the pay.
-		/// </summary>
-		/// <returns></returns>
-		public double GetPay()
-        {
-            const double REGULAR_HOURS = 40;
-            const double OVERTIME_RATE = 1.5;
-
-            if (hours <= REGULAR_HOURS)
-            {
-                return rate * hours;
-            }
-            else
-            {
-                return rate * REGULAR_HOURS + rate * OVERTIME_RATE * (hours - REGULAR_HOURS);
-            }
         }
 
 		/// <summary>
@@ -89,109 +66,30 @@ namespace Inheritance
 			this.hours = hours;
 		}
 
-		/// <summary>
-		/// String that displays wage.
-		/// </summary>
-		/// <returns>string that displays wage</returns>
-		public override string ToString()
+        /// <summary>
+        /// For claculaing the pay.
+        /// </summary>
+        /// <returns></returns>
+        public double GetPay()
+        {
+            if (hours <= 40)
+            {
+                return rate * hours;
+            }
+            else
+            {
+                return rate * 40 + rate * 1.5 * (hours - 40);
+            }
+        }
+
+        /// <summary>
+        /// String that displays wage.
+        /// </summary>
+        /// <returns>string that displays wage</returns>
+        public override string ToString()
 		{
-			return $"Wages ID: {GetId()} \nName: {GetName()} \nAddress: {GetAddress()} \nPhone: {GetPhone()} \nSIN: {GetSin()} \nDate of Birth:{GetDateOfBirth()} \nDepartment: {GetDepartment()} \nRate: {GetRate()} \nHours {GetHours()} \nPay: {GetPay()}";
+			return $"\nWages ID: {GetId()} \nName: {GetName()} \nAddress: {GetAddress()} \nPhone: {GetPhone()} \nSIN: {GetSin()} \nDate of Birth:{GetDateOfBirth()} \nDepartment: {GetDepartment()} \nRate: {GetRate()} \nHours {GetHour()} \nPay: {GetPay()}";
 		}
-
-   //     private double rate;
-   //     private double hours;
-   //     private const double REGULAR_HOURS = 40;
-   //     private const double OVERTIME_RATE = 1.5;
-
-   //     /**
-		 //* Creates a Wages object with default values.
-		 //*/
-   //     public Wages()
-   //     {
-
-   //     }
-
-   //     /**
-		 //* Creates a Wages object providing the id, name, address, phone, address, sin, date of birth, department, rate, and hours.
-		 //* @param id id
-		 //* @param name name
-		 //* @param address address
-		 //* @param phone phone number
-		 //* @param sin Social Insurance Number
-		 //* @param dateOfBirth date of birth
-		 //* @param department department
-		 //* @param rate rate
-		 //* @param hours hours
-		 //*/
-   //     public Wages(String id, String name, String address, String phone, long sin, String dateOfBirth, String department, double rate, double hours) :
-   //         base(id, name, address, phone, sin, dateOfBirth, department)
-   //     {
-
-   //         this.rate = rate;
-   //         this.hours = hours;
-   //     }
-
-   //     /**
-		 //* Returns the hourly rate.
-		 //* @return the hourly rate
-		 //*/
-   //     public double GetRate()
-   //     {
-   //         return rate;
-   //     }
-
-   //     /**
-		 //* Sets the hourly rate to the hourly rate provided.
-		 //* @param rate the hourly rate to Set
-		 //*/
-   //     public void SetRate(double rate)
-   //     {
-   //         this.rate = rate;
-   //     }
-
-   //     /**
-		 //* Returns the hours worked.
-		 //* @return the hours worked
-		 //*/
-   //     public double GetHours()
-   //     {
-   //         return hours;
-   //     }
-
-   //     /**
-		 //* Sets the hours to the hours worked.
-		 //* @param hours the hours worked to Set
-		 //*/
-   //     public void SetHours(double hours)
-   //     {
-   //         this.hours = hours;
-   //     }
-
-   //     /**
-		 //* Returns the pay.
-		 //* @return the pay
-		 //*/
-   //     public double GetPay()
-   //     {
-   //         if (hours <= REGULAR_HOURS)
-   //         {
-   //             return rate * hours;
-   //         }
-   //         else
-   //         {
-   //             return rate * REGULAR_HOURS + rate * OVERTIME_RATE * (hours - REGULAR_HOURS);
-   //         }
-   //     }
-
-
-   //     public String toString()
-   //     {
-   //         return "Wages ID =" + GetId() + ", name =" + GetName() + ", address =" + GetAddress()
-   //                 + ", phone =" + GetPhone() + ", SIN =" + GetSin() + ", date of birth =" + GetDateOfBirth()
-   //                 + ", department =" + GetDepartment() + ", rate =" + GetRate() + ", hours =" + GetHours()
-   //                 + ", pay =" + GetPay();
-   //     }
-
 
     }
 }

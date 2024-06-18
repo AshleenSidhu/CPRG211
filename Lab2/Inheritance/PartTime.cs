@@ -39,7 +39,7 @@ namespace Inheritance
 		/// Find salary of part time employee
 		/// </summary>
 		/// <returns></returns>
-		public double GetSalary()
+		public double GetPay()
 		{
             // pay is calculated based on hourly rate * work hours with no overtime paid
             return rate * hours;
@@ -81,9 +81,9 @@ namespace Inheritance
             this.hours = hours;
         }
 
-        public string toString()
+        public string ToString()
         {
-            return $"Wages ID: {GetId()} \nName: {GetName()} \nAddress: {GetAddress()} \nPhone: {GetPhone()} \nSIN: {GetSin()} \nDate of Birth:{GetDateOfBirth()} \nDepartment: {GetDepartment()} \nRate: {GetRate()} \nHours {GetHours()} \nPay: {GetPay()}";
+            return $"\nWages ID: {GetId()} \nName: {GetName()} \nAddress: {GetAddress()} \nPhone: {GetPhone()} \nSIN: {GetSin()} \nDate of Birth:{GetDateOfBirth()} \nDepartment: {GetDepartment()} \nRate: {GetRate()} \nHours {GetHour()} \nPay: {GetPay()}";
         }
 
 
