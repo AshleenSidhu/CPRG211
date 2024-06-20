@@ -1,0 +1,22 @@
+﻿@page "/calculator"
+
+<h3>Calculator</h3>
+
+<input placeholder="First Number:" @bind="number1"/>
+<br/>
+<input placeholder="Second Number:" @bind="number2"/>
+<br/>
+<button @onclick="Add">Add</button>
+<h4>Result</h4>
+<p>@result</p>
+
+@code {
+    public string number1 { get; set; }
+    public string number2 { get; set; }
+    public int result { get; set; }
+
+    private void Add()
+	{
+		result = int.Parse(number1) + int.Parse(number2);
+	}
+}
