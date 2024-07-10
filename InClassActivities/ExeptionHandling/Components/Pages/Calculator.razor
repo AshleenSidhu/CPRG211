@@ -3,6 +3,17 @@
 
 <h3>Calculator</h3>
 
+
+@if (errorMessage != null)
+{
+    <div class="alert alert-danger text-center" role="alert" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <strong>Error</strong> @errorMessage
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" @onclick="ClearErrorMessage">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default">First Number</span>
   <input placeholder="Input Number" @bind="number1" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
@@ -14,12 +25,12 @@
 </div>
 
 <div class="btn-group" role="group" aria-label="Basic outlined example">
-	<button @onclick="Add" type="button" class="btn btn-outline-primary">💕Addition(+)</button>
-  <button @onclick="Subtract" type="button" class="btn btn-outline-primary">Subtract(-)</button>
-  <button @onclick="Multiply" type="button" class="btn btn-outline-primary">Multiply(x)</button>
-  <button @onclick="Divide" type="button" class="btn btn-outline-primary">Divide(/)</button>
-  <button @onclick="Remainder" type="button" class="btn btn-outline-primary">Remainder(%)</button>
-  <button @onclick="SquareRoot" type="button" class="btn btn-outline-primary">Square Root(√)</button>
+	<button @onclick="Add" type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-primary">💕Addition(+)</button>
+  <button @onclick="Subtract" type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-primary">Subtract(-)</button>
+  <button @onclick="Multiply" type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-primary">Multiply(x)</button>
+  <button @onclick="Divide" type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-primary">Divide(/)</button>
+  <button @onclick="Remainder" type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-primary">Remainder(%)</button>
+  <button @onclick="SquareRoot" type="button"  class="btn btn-outline-primary">Square Root(√)</button>
   <button @onclick="Clear" type="button" class="btn btn-outline-primary">Clear</button>
 </div>
 
@@ -29,19 +40,30 @@
   <input readonly @bind="@result" class="form-control" />
 </div>
 
+
+@* 
 @if (errorMessage != null)
 {
   <div class="alert alert-danger" role="alert">
     @errorMessage
   </div>
-}
+
+			<div class="alert alert-danger text-center" role="alert">
+	  <strong>Error</strong> @errorMessage
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+} *@
 
 @code {
+
 	public string number1;
 	public string number2;
 	public double result = 0;
 	public string errorMessage;
 
+	// Custom exception for divide by zero
 	public class DivideByZeroException : Exception
 	{
 		public DivideByZeroException() : base("Cannot divide by zero")
@@ -49,20 +71,79 @@
 		}
 	}
 
+	// Custom exception for negative numbers
+	public class NegativeNumberException : Exception
+	{
+		public NegativeNumberException() : base("Cannot take the square root of a negative number")
+		{
+		}
 
+	}
+
+	// Custom exception for equal numbers
+	public class EqualNumberException : Exception
+	{
+		public EqualNumberException(string message) : base(message)
+		{
+		}
+	}
+
+	//method to check if the numbers are equal for adding numbers
+	private void CheckNumberFormatAndEqualNumber()
+	{
+		try
+		{
+			double.Parse(number1);
+			double.Parse(number2);
+
+			//check if the numbers are equal for adding numbers
+			if (number1 == number2)
+			{
+				throw new EqualNumberException("error both numbers cannot be equal");
+			}
+		}
+		catch (FormatException)
+		{
+			errorMessage = "Invalid number format";
+		}
+		catch (Exception)
+		{
+			errorMessage = "An unexpected error has occured.";
+		}
+	}
 
 	private void Add()
 	{
+		// Checks if the numbers are equal for adding numbers
+		CheckNumberFormatAndEqualNumber();
+		if (errorMessage != null)
+		{
+			return;
+		}
+		
 		result = double.Parse(number1) + double.Parse(number2);
 	}
 
+
 	private void Subtract()
 	{
+		// Checks if the numbers are equal for subracting numbers
+		CheckNumberFormatAndEqualNumber();
+		if (errorMessage != null)
+		{
+			return;
+		}
 		result = double.Parse(number1) - double.Parse(number2);
 	}
 
 	private void Multiply()
 	{
+		// Checks if the numbers are equal for multiplying numbers
+		CheckNumberFormatAndEqualNumber();
+		if (errorMessage != null)
+		{
+			return;
+		}
 		result = double.Parse(number1) * double.Parse(number2);
 	}
 
@@ -76,33 +157,65 @@
 			}
 			result = double.Parse(number1) / double.Parse(number2);
 		}
-		// second number (number2) is equal to zero. if it is, the 
-		// code throws a dividebyzeroexception by creating an
-		// instance of the exception class and passing a custom 
-		// error message to it. this exception is then caught in a try-catch block.
-		catch (DivideByZeroException e)
+		catch (FormatException)
 		{
-			errorMessage = e.Message;
+			errorMessage = "Invalid number format";
+		}
+		catch (DivideByZeroException ex)
+		{
+			errorMessage = ex.Message;
+		}
+		catch (Exception)
+		{
+			errorMessage = "An unexpected error has occured.";
 		}
 	}
 
 	private void SquareRoot()
 	{
-		result = Math.Sqrt(double.Parse(number1));
-
+		try
+		{
+			if (double.Parse(number1) < 0 || double.Parse(number2) < 0)
+			{
+				throw new NegativeNumberException();
+			}
+			result = Math.Sqrt(double.Parse(number1));
+		}
+		catch (FormatException)
+		{
+			errorMessage = "Invalid number format";
+		}
+		catch (NegativeNumberException ex)
+		{
+			errorMessage = ex.Message;
+		}
+		catch (Exception)
+		{
+			errorMessage = "An unexpected error has occured.";
+		}
 	}
 
 	private void Remainder()
 	{
-		result = double.Parse(number1) % double.Parse(number2);
-		NormalizeZero();
-	}
-	// New method to normalize -0.0 to 0.0
-	private void NormalizeZero()
-	{
-		if (result.CompareTo(-0.0) == 0)
+		try
 		{
-			result = 0.0;
+			if (double.Parse(number2) == 0)
+			{
+				throw new DivideByZeroException();
+			}
+			result = double.Parse(number1) % double.Parse(number2);
+		}
+		catch (FormatException)
+		{
+			errorMessage = "Invalid number format";
+		}
+		catch (DivideByZeroException ex)
+		{
+			errorMessage = ex.Message;
+		}
+		catch (Exception)
+		{
+			errorMessage = "An unexpected error has occured.";
 		}
 	}
 
@@ -111,6 +224,11 @@
 		number1 = "";
 		number2 = "";
 		result = 0;
+		errorMessage = null;
+	}
+
+	private void ClearErrorMessage()
+	{
 		errorMessage = null;
 	}
 
